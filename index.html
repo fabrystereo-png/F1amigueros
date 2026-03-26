@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIGUEROS F1 | Liga Oficial</title>
+    <title>AMIGUEROS F1 | Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -44,31 +44,32 @@
             justify-content: center; 
             position: relative; 
             text-align: center; 
+            padding: 20px;
         }
-        #bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.4); }
+        #bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.3); }
         
         .logo-central {
-            max-width: 500px;
-            width: 80%;
+            max-width: 600px;
+            width: 85%;
             height: auto;
-            filter: drop-shadow(0 0 20px rgba(0, 210, 190, 0.6));
+            filter: drop-shadow(0 0 25px rgba(0, 210, 190, 0.7));
             margin-bottom: 20px;
             animation: pulse 3s infinite ease-in-out;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0, 210, 190, 0.6)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(0, 210, 190, 0.9)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 40px rgba(0, 210, 190, 0.9)); }
         }
 
         /* SECCIONES */
-        .section { padding: 100px 10% 50px; }
+        .section { padding: 100px 10% 80px; }
         h2 { font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 40px; border-left: 8px solid var(--f1-red); padding-left: 20px; text-transform: uppercase; }
 
         /* GRILLA Y TARJETAS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: var(--glass); padding: 30px; border-radius: 4px; transition: 0.3s; backdrop-filter: blur(5px); border-left: 4px solid var(--f1-red); }
-        .card:hover { transform: translateY(-5px); background: rgba(225, 6, 0, 0.1); }
+        .card:hover { transform: translateY(-5px); background: rgba(225, 6, 0, 0.1); border-color: var(--neon-blue); }
         .card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin-bottom: 15px; }
 
         /* STREAMING */
@@ -77,12 +78,33 @@
         .kick { background: var(--kick); color: black; }
 
         /* FORMULARIO */
-        .form-container { background: #15151e; padding: 40px; border-radius: 10px; border: 1px solid #333; }
+        .form-container { 
+            background: linear-gradient(145deg, #15151e, #0b0b0f);
+            padding: 40px; 
+            border-radius: 10px; 
+            border: 1px solid #333; 
+        }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         input, select { background: #252530; border: 1px solid #444; padding: 15px; color: #fff; font-family: 'Rajdhani', sans-serif; font-size: 1.1em; border-radius: 4px; width: 100%; }
-        button { grid-column: span 2; background: var(--f1-red); color: #fff; padding: 20px; border: none; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; text-transform: uppercase; clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); margin-top: 20px; width: 100%; }
+        
+        button { 
+            grid-column: span 2; 
+            background: var(--f1-red); 
+            color: #fff; 
+            padding: 20px; 
+            border: none; 
+            font-family: 'Orbitron', sans-serif; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%); 
+            margin-top: 20px; 
+            width: 100%; 
+            transition: 0.3s;
+        }
+        button:hover { background: #fff; color: var(--f1-red); }
 
-        footer { padding: 50px; text-align: center; background: #000; border-top: 5px solid var(--f1-red); font-family: 'Orbitron'; font-size: 0.8em; }
+        footer { padding: 60px; text-align: center; background: #000; border-top: 5px solid var(--f1-red); font-family: 'Orbitron'; font-size: 0.8em; }
 
         @media (max-width: 768px) { 
             header { justify-content: center; }
@@ -98,7 +120,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#transmisiones">Vivos</a>
         <a href="#pilotos">Pilotos</a>
-        <a href="#unirse">Sumate</a>
+        <a href="#sumate">Sumate</a>
     </nav>
 </header>
 
@@ -106,27 +128,27 @@
     <video autoplay muted loop id="bg-video">
         <source src="Presentacion F1AMIGUEROS.mp4" type="video/mp4">
     </video>
-    <img src="Logo Solo.jpg" alt="Logo Amigueros F1" class="logo-central">
+    <img src="logo.jpg.jpg" alt="Amigueros F1" class="logo-central">
 </section>
 
 <section id="transmisiones" class="section">
-    <h2>Transmisiones en Vivo</h2>
+    <h2>Box de Transmisión</h2>
     <div class="grid">
         <div class="card" style="border-left-color: var(--twitch);">
             <h3>FABRYSTEREO</h3>
-            <p>Red Bull Racing</p>
+            <p>Oracle Red Bull Racing</p>
             <a href="https://www.twitch.tv/fabrystereo28" target="_blank" class="btn-stream twitch">Ver en Twitch</a>
         </div>
         <div class="card" style="border-left-color: var(--kick);">
             <h3>DENIS VARGAS</h3>
-            <p>Mercedes-AMG</p>
+            <p>Mercedes-AMG Petronas</p>
             <a href="https://www.kick.com/denisvargas645" target="_blank" class="btn-stream kick">Ver en Kick</a>
         </div>
     </div>
 </section>
 
 <section id="pilotos" class="section">
-    <h2>Parrilla Confirmada</h2>
+    <h2>Parrilla Confirmada #3</h2>
     <div class="grid">
         <div class="card" style="border-left-color: #00d2be;"><h3>MERCEDES-AMG</h3><p>• KIKE<br>• DENIS</p></div>
         <div class="card" style="border-left-color: #ef1a2d;"><h3>FERRARI</h3><p>• AGUSTÍN<br>• CRISTIAN CASTRO</p></div>
@@ -141,4 +163,36 @@
     </div>
 </section>
 
-<section id="unirse"
+<section id="sumate" class="section">
+    <h2>Inscripciones Abiertas</h2>
+    <div class="form-container">
+        <form action="https://formspree.io/f/f1amigueros@gmail.com" method="POST">
+            <div class="form-grid">
+                <input type="text" name="nombre" placeholder="Nombre Piloto" required>
+                <input type="text" name="pais" placeholder="País (Ej: 🇦🇷 Argentina)" required>
+                <input type="tel" name="whatsapp" placeholder="WhatsApp / Celular" required>
+                <input type="text" name="instagram" placeholder="Instagram @usuario">
+                <select name="experiencia" required>
+                    <option value="" disabled selected>Experiencia</option>
+                    <option>Principiante</option>
+                    <option>Intermedio</option>
+                    <option>Avanzado</option>
+                </select>
+                <select name="juego" required>
+                    <option value="" disabled selected>Plataforma</option>
+                    <option>F1 24</option>
+                    <option>F1 25</option>
+                    <option>Ambos</option>
+                </select>
+            </div>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>AMIGUEROS F1 - SEASON 2026</p>
+</footer>
+
+</body>
+</html>
