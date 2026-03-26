@@ -3,189 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amigueros F1 | Torneo Amateur</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXX');
-    </script>
+    <title>AMIGUEROS F1 | Liga Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --f1-red: #e10600;
-            --dark-bg: #15151e;
-            --card-bg: #1f1f27;
-            --white: #ffffff;
+            --f1-black: #0b0b0f;
+            --f1-dark-gray: #15151e;
+            --glass: rgba(255, 255, 255, 0.05);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--white);
-            margin: 0;
-            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--f1-black);
+            color: #fff;
+            overflow-x: hidden;
         }
 
+        /* NAVBAR */
         header {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--f1-red);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 3px solid var(--f1-red);
         }
 
-        .logo { max-width: 200px; }
+        .logo-container img {
+            height: 60px;
+            filter: drop-shadow(0 0 10px rgba(225, 6, 0, 0.5));
+        }
 
-        nav { margin-top: 15px; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; text-transform: uppercase; }
-        nav a:hover { color: var(--f1-red); }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8em;
+            margin-left: 25px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
 
+        nav a:hover { color: var(--f1-red); text-shadow: 0 0 10px var(--f1-red); }
+
+        /* HERO SECTION */
         .hero {
-            position: relative;
-            height: 60vh;
-            overflow: hidden;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
             text-align: center;
         }
 
         #bg-video {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             z-index: -1;
-            filter: brightness(0.4);
+            filter: brightness(0.35);
         }
 
-        .section { padding: 50px 20px; max-width: 1000px; margin: auto; }
-        h2 { border-left: 5px solid var(--f1-red); padding-left: 15px; text-transform: uppercase; }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 8vw, 5rem);
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 50%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
 
-        /* Formulario Estilo F1 */
-        .form-container {
-            background-color: var(--card-bg);
+        .hero p { font-size: 1.5rem; letter-spacing: 5px; color: var(--f1-red); font-weight: bold; text-transform: uppercase; }
+
+        /* SECCIONES */
+        .section { padding: 100px 10%; position: relative; }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+        }
+
+        h2::after { content: ""; height: 4px; width: 100px; background: var(--f1-red); display: inline-block; }
+
+        /* CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-radius: 4px;
+            position: relative;
+            transition: 0.4s ease;
+            backdrop-filter: blur(5px);
         }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 5px; color: #ccc; }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: #2b2b35;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 5px;
+        .card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--f1-red);
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(225, 6, 0, 0.1);
+            border-color: var(--f1-red);
+        }
+
+        /* FORMULARIO */
+        .form-container {
+            background: linear-gradient(145deg, #15151e, #0b0b0f);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        input, select {
+            background: #252530;
+            border: 1px solid #444;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1em;
+            border-radius: 4px;
+        }
+
+        input:focus { border-color: var(--f1-red); outline: none; }
 
         button {
-            background-color: var(--f1-red);
-            color: white;
+            grid-column: span 2;
+            background: var(--f1-red);
+            color: #fff;
+            padding: 20px;
             border: none;
-            padding: 15px 30px;
+            font-family: 'Orbitron', sans-serif;
             font-weight: bold;
             cursor: pointer;
-            width: 100%;
             text-transform: uppercase;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
             transition: 0.3s;
+            margin-top: 20px;
         }
 
-        button:hover { background-color: #b00500; transform: scale(1.02); }
+        button:hover { background: #fff; color: var(--f1-red); transform: scale(1.02); }
 
-        .footer { text-align: center; padding: 40px; background: #000; font-size: 0.8em; }
+        footer { padding: 50px; text-align: center; background: #000; border-top: 5px solid var(--f1-red); }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            button { grid-column: span 1; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Amigueros F1 Logo" class="logo">
+    <div class="logo-container">
+        <img src="Logo Solo.jpg" alt="AMIGUEROS F1">
+    </div>
     <nav>
-        <a href="#inicio">Inicio</a>
+        <a href="#inicio">Carrera</a>
         <a href="#novedades">Novedades</a>
-        <a href="#unirse">Sumate</a>
+        <a href="#unirse">Inscribirse</a>
     </nav>
 </header>
 
 <section id="inicio" class="hero">
     <video autoplay muted loop id="bg-video">
-        <source src="presentacion.mp4" type="video/mp4">
+        <source src="Presentacion F1AMIGUEROS.mp4" type="video/mp4">
     </video>
-    <div>
-        <h1>BIENVENIDOS AL CAMPEONATO AMIGUEROS F1</h1>
-        <p>Pasión, velocidad y amistad en cada curva.</p>
-    </div>
+    <h1>AMIGUEROS F1</h1>
+    <p>VELOCIDAD • PASIÓN • GLORIA</p>
 </section>
 
 <section id="novedades" class="section">
-    <h2>Últimas Novedades</h2>
-    <p>Seguinos en nuestro Instagram para ver los highlights de cada carrera.</p>
-    <a href="https://instagram.com/TU_USUARIO" style="color: var(--f1-red); text-decoration: none;">Ir al Instagram Oficial →</a>
+    <h2>Noticias del Paddock</h2>
+    <div class="grid">
+        <div class="card">
+            <h3 style="color: var(--f1-red)">TIEMPOS EN VIVO</h3>
+            <p>Seguí la telemetría y los tiempos de cada piloto en tiempo real. Próximamente.</p>
+        </div>
+        <div class="card">
+            <h3>MERCADO DE PILOTOS</h3>
+            <p>¿Tenés lo necesario para el podio? Buscamos pilotos para el nuevo torneo F1 25.</p>
+        </div>
+        <div class="card">
+            <h3>INSTAGRAM</h3>
+            <p>Reviví los mejores momentos y sanciones en nuestra cuenta oficial.</p>
+        </div>
+    </div>
 </section>
 
 <section id="unirse" class="section">
-    <h2>Formulario de Inscripción</h2>
+    <h2>Registro de Pilotos</h2>
     <div class="form-container">
         <form action="https://formspree.io/f/f1amigueros@gmail.com" method="POST">
-            <div class="form-group">
-                <label>Nombre Completo</label>
-                <input type="text" name="nombre" required>
-            </div>
-            
-            <div class="form-group">
-                <label>País / Bandera</label>
-                <input type="text" name="pais" placeholder="Ej: Argentina 🇦🇷">
-            </div>
-
-            <div class="form-group">
-                <label>Fecha de Nacimiento</label>
-                <input type="date" name="nacimiento">
-            </div>
-
-            <div class="form-group">
-                <label>Usuario de Instagram</label>
-                <input type="text" name="instagram" placeholder="@tu_usuario">
-            </div>
-
-            <div class="form-group">
-                <label>WhatsApp (Número de contacto)</label>
-                <input type="tel" name="whatsapp" required>
-            </div>
-
-            <div class="form-group">
-                <label>Experiencia en Simracing</label>
-                <select name="experiencia">
-                    <option value="principiante">Principiante</option>
-                    <option value="intermedio">Intermedio</option>
-                    <option value="avanzado">Avanzado / Pro</option>
+            <div class="form-grid">
+                <input type="text" name="nombre" placeholder="Nombre del Piloto" required>
+                <input type="text" name="pais" placeholder="País (Ej: 🇦🇷 Argentina)" required>
+                <input type="tel" name="whatsapp" placeholder="WhatsApp (Con código de área)" required>
+                <input type="text" name="instagram" placeholder="Instagram @usuario">
+                <select name="experiencia" required>
+                    <option value="" disabled selected>Nivel de Experiencia</option>
+                    <option value="Principiante">Principiante (Rookie)</option>
+                    <option value="Intermedio">Intermedio (Semi-Pro)</option>
+                    <option value="Avanzado">Avanzado (Pro)</option>
                 </select>
-            </div>
-
-            <div class="form-group">
-                <label>¿Qué juego corrés?</label>
-                <select name="juego">
+                <select name="juego" required>
+                    <option value="" disabled selected>Plataforma / Juego</option>
                     <option value="F1 24">F1 24</option>
                     <option value="F1 25">F1 25</option>
                     <option value="Ambos">Ambos</option>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label>Escudería Preferida</label>
-                <input type="text" name="equipo" placeholder="Ej: Ferrari, Red Bull...">
-            </div>
-
-            <button type="submit">Enviar Solicitud</button>
+            <button type="submit">Enviar Solicitud a Comisarios</button>
         </form>
     </div>
 </section>
 
-<div class="footer">
-    <p>&copy; 2026 Amigueros F1 - Todos los derechos reservados.</p>
-</div>
+<footer>
+    <p style="font-family: 'Orbitron'; letter-spacing: 2px;">AMIGUEROS F1 - LA BÚSQUEDA DEL CAMPEÓN</p>
+</footer>
 
 </body>
 </html>
